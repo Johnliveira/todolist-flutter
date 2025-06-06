@@ -3,9 +3,5 @@ class Task {
   final String title;
   final String description;
 
-  const Task({
-    this.id = "",
-    required this.title,
-    required this.description
-  });
+  const Task({required this.id, required this.title, required this.description});
 }

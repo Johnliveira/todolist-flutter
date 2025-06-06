@@ -4,16 +4,16 @@ const TASK_DUMMY = {
   '1': Task(
     id: '1',
     title: 'Arrombar a casa',
-    description: 'Deixar a casa limpa nos trinco'
+    description: 'Deixar a casa limpa nos trinco',
   ),
   '2': Task(
-      id: '2',
-      title: 'Fazer arroz',
-      description: 'Plantar e depois colher'
+    id: '2',
+    title: 'Fazer arroz',
+    description: 'Plantar e depois colher',
   ),
   '3': Task(
-      id: '3',
-      title: 'Hello world',
-      description: 'Explodir algum predio e dizer ola na entrevista'
+    id: '3',
+    title: 'Hello world',
+    description: 'Explodir algum predio e dizer ola na entrevista',
   ),
 };

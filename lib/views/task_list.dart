@@ -10,23 +10,23 @@ class TaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TaskProvider tasks = Provider.of(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Tarefas'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: (){
+            onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.TASK_FORM);
             },
-          )
-        ]
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: tasks.amount,
-        itemBuilder: (ctx,i) => TaskListScreen(tasks.listAll.elementAt(i))
-      )
+        itemBuilder: (ctx, i) => TaskListScreen(tasks.listAll.elementAt(i)),
+      ),
     );
   }
 }

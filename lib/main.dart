@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routes: {
-          AppRoutes.SLASH : (_) => TaskList(),
-          AppRoutes.TASK_FORM : (_) => TaskForm()
-        }
-      )
+          AppRoutes.SLASH: (_) => TaskList(),
+          AppRoutes.TASK_FORM: (_) => TaskForm(),
+        },
+      ),
     );
   }
 }

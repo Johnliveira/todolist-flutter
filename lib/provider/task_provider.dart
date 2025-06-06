@@ -31,7 +31,7 @@ class TaskProvider with ChangeNotifier {
   }
 
   void delete(Task? task) {
-    if (task != null && task.id != null) {
+    if (task != null) {
       _items.remove(task.id);
 
       notifyListeners();
