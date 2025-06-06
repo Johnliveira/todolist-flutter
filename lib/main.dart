@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_flutter/provider/task_provider.dart';
 import 'package:todo_list_flutter/routes/app_routes.dart';
+import 'package:todo_list_flutter/views/login_screen.dart';
 import 'package:todo_list_flutter/views/task_form.dart';
 import 'package:todo_list_flutter/views/task_list.dart';
 
@@ -19,11 +20,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'TODOLIST Flutter',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
+        initialRoute: AppRoutes.LOGIN,
         routes: {
-          AppRoutes.SLASH: (_) => TaskList(),
+          AppRoutes.LOGIN: (_) => const LoginScreen(),
+          AppRoutes.SLASH: (_) => const TaskList(),
           AppRoutes.TASK_FORM: (_) => TaskForm(),
         },
       ),
@@ -72,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
