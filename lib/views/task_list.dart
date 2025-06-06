@@ -12,20 +12,122 @@ class TaskList extends StatelessWidget {
     final TaskProvider tasks = Provider.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: const Text('Lista de Tarefas'),
+        title: const Text(
+          'Minhas Tarefas',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+        backgroundColor: Colors.blue.shade600,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.TASK_FORM);
-            },
+          Container(
+            margin: const EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.add_rounded),
+              iconSize: 28,
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.TASK_FORM);
+              },
+            ),
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: tasks.amount,
-        itemBuilder: (ctx, i) => TaskListScreen(tasks.listAll.elementAt(i)),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.blue.shade600,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Total de tarefas',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '${tasks.amount}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: tasks.amount == 0
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.task_alt,
+                          size: 80,
+                          color: Colors.grey.shade400,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Nenhuma tarefa ainda',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Toque no + para adicionar sua primeira tarefa',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.only(top: 16),
+                    itemCount: tasks.amount,
+                    itemBuilder: (ctx, i) => TaskListScreen(
+                      tasks.listAll.elementAt(i),
+                    ),
+                  ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).pushNamed(AppRoutes.TASK_FORM);
+        },
+        backgroundColor: Colors.blue.shade600,
+        foregroundColor: Colors.white,
+        icon: const Icon(Icons.add_rounded),
+        label: const Text(
+          'Nova Tarefa',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
